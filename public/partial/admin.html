@@ -1,0 +1,183 @@
+<script>
+    $(function () {
+        $('.showMe2').removeClass('hidden');
+        $('.showMe1').addClass('hidden');
+    });
+</script>
+<div ng-init="pay48Fn()">
+    <div class="mdl-grid mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card mdl-shadow--2dp pie-chart">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">TRANSFER FROM ACCOUNT</h2>
+                </div>
+                <div class="mdl-card__supporting-text" style="overflow: auto;">
+                    <section id="home2">
+                        <div id="truckWisePending">
+                            <div class="div-table-content">
+                                <table border="3" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                    <thead style="background-color: royalblue; color: white">
+                                    <tr>
+                                        <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
+                                        <th class="hidden">idUser</th>
+                                        <th class="hidden">isPaid</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Date</th>
+                                        <th class="hidden">Login Name</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Name</th>
+                                        <th>Increment Amount</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Donor</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Acc No.</th>
+                                        <th class="hidden">Acc Type</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Bank</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Branch</th>
+                                        <th class="hidden">IFSC</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Address</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Contact</th>
+                                        <th class="hidden">Email</th>
+                                        <th>Days</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!-- Row 1 -->
+                                    <tr ng-repeat="payMoney in payMoneys">
+                                        <!-- class="mdl-data-table__cell--non-numeric" -->
+                                        <td class="hidden">{{payMoney.idUser}}</td>
+                                        <td class="hidden">{{payMoney.isPaid}}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{payMoney.onDate | date :  "dd.MM.y"}}</td>
+                                        <td class="hidden">{{payMoney.loginName}}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{payMoney.accountName}}</td>
+                                        <td>{{payMoney.commAmount}}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">
+                                            <button type="button"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"  ng-click="payMoneyFn(payMoney.idUser,payMoney.loginName,payMoney.accountName,payMoney.mobile,payMoney.address);">Donor</button>
+                                        </td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{payMoney.accountNumber}}</td>
+                                        <td class="hidden">{{payMoney.accountType}}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{payMoney.bankName}}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{payMoney.branchName}}</td>
+                                        <td class="hidden">{{payMoney.ifscCode}}</td>
+                                        <td>{{payMoney.address}}</td>
+                                        <td>{{payMoney.mobile}}</td>
+                                        <td class="hidden">{{payMoney.email}}</td>
+                                        <td>{{payMoney.days}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mdl-grid mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card mdl-shadow--2dp pie-chart">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">TO ACCOUNT</h2>
+                </div>
+                <div class="mdl-card__supporting-text" style="overflow: auto;">
+                    <section id="home3">
+                        <div id="truckWisePending2">
+                            <div class="div-table-content table-responsive">
+                                <table border="3" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                    <thead style="background-color: royalblue; color: white">
+                                    <th class="hidden">Status</th>
+                                    <th class="hidden">idDlinks</th>
+                                    <th class="hidden">isBonus</th>
+                                    <th class="hidden">RefUserId</th>
+                                    <th class="hidden">isPaid</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Date</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Log in</th>
+                                    <th>Amount</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Receiver</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Acc Name</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Acc No</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Bank</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Branch</th>
+                                    <th class="hidden">ifscCode</th>
+                                    <th>Contact</th>
+                                    <th class="hidden">Email</th>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="getHelp in getHelps" style="font-weight: bold">
+                                        <td class="hidden">{{getHelp.status}}</td>
+                                        <td class="hidden">{{getHelp.idDlinks}}</td>
+                                        <td class="hidden">{{getHelp.isBonus}}</td>
+                                        <td class="hidden">{{getHelp.refUserId}}</td>
+                                        <td class="hidden">{{getHelp.isPaid}}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{getHelp.entryDate | date :  "dd.MM.y"}}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{getHelp.loginName}}</td>
+                                        <td>{{getHelp.amount}}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">
+                                            <button type="button"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"  ng-click="getHelpCreditorFn(getHelp.idDlinks,getHelp.isBonus,getHelp.refUserId,getHelp.loginName,getHelp.amount,getHelp.accountName,getHelp.accountNumber,getHelp.bankName,getHelp.branchName,getHelp.ifscCode,getHelp.mobile,getHelp.email);">Receiver</button>
+                                        </td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{getHelp.accountName}}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{getHelp.accountNumber}}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{getHelp.bankName}}</td>
+                                        <td class="mdl-data-table__cell--non-numeric">{{getHelp.branchName}}</td>
+                                        <td class="hidden">{{getHelp.ifscCode}}</td>
+                                        <td>{{getHelp.mobile}}</td>
+                                        <td class="hidden">{{getHelp.email}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mdl-grid mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+        <div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card mdl-shadow--2dp pie-chart">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Receiver</h2>
+                </div>
+                <div class="mdl-card__supporting-text" style="overflow: auto;">
+                    <form id="regFirmForm" ng-init="loadme()" name="regForm" autocomplete="off" novalidate>
+                        <ul class="plan">
+                            <li class="hidden">idDlinks &nbsp; {{ admin.idDlinks}}</li>
+                            <li class="hidden">isBonus &nbsp;{{admin.isBonus}}</li>
+                            <li class="hidden">targetUserId&nbsp;{{admin.targetUserId}}</li>
+                            <li>Login Name&nbsp;<span class="boldme textlineheight">{{admin.loginName}}</span></li>
+                            <li>
+                                Amount :&nbsp;
+                                <input type="text" class="boldme textlineheight" name="amount" ng-model="admin.amount"  />
+                            </li>
+                            <li>Account Name&nbsp;<span class="mdl-typography--font-bold">{{admin.accountName}}</span></li>
+                            <li>Account Number&nbsp;{{admin.accountNumber}}</li>
+                            <li>Bank Name &nbsp;{{admin.bankName}}</li>
+                            <li>Branch Name &nbsp;{{admin.branchName}}</li>
+                            <li>IFSC Code &nbsp;{{admin.ifscCode}}</li>
+                            <li>Mobile &nbsp;{{admin.mobile}}</li>
+                            <li>Email &nbsp;{{admin.email}}</li>
+                        </ul>
+
+                        <div>
+                            <div>
+                                <div>
+                                    <h4>Donor</h4>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li class="hidden">refUserId &nbsp;{{admin.refUserId}}</li>
+                                        <li>Login Name &nbsp;-->&nbsp;{{admin.sloginName}}</li>
+                                        <li>Account Name &nbsp;{{admin.saccountName}}</li>
+                                        <li>Mobile &nbsp;{{admin.smobile}}</li>
+                                        <li>Address &nbsp;{{admin.sAddress}}</li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div>
+                        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="createPaymentFn();">CREATE PAYMENT</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

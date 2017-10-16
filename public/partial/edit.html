@@ -1,0 +1,94 @@
+<script src="js/cicle-loading.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        $('#sidebar-wrapper2').removeClass('hidden');
+        $('#sidebar-wrapper3').addClass('hidden');
+        $.material.init();
+    });
+</script>
+<div>
+            <div class="container">
+            <div class="row text-center pad-row" >
+                <form id="regFirmForm" ng-init="loadme()" name="regForm" autocomplete="off" novalidate>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="panel panel-primary adjust-border-radius">
+                        <div class="panel-heading adjust-border">
+                            <h4>BANK DETAIL</h4>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="plan">
+                                <b>
+                                    <li>
+                                        Account Name :<br/>
+                                        <input type="text" class="boldme textlineheight" name="accountName" ng-model="edit.accountName"  />
+                                    </li>
+                                    <li>
+                                        Account Number :<br/>
+                                        <input type="text" class="boldme textlineheight" name="accountNumber" ng-model="edit.accountNumber"  />
+                                    </li>
+                                    <li>
+                                        Account Type :<br/>
+                                        <input type="text" class="boldme textlineheight" name="accountType" ng-model="edit.accountType"  />
+                                    </li>
+                                    <li>
+                                        Bank Name :<br/>
+                                        <input type="text" class="boldme textlineheight" name="bankName" ng-model="edit.bankName"  />
+                                    </li>
+                                    <li>
+                                        Branch Name :<br/>
+                                        <input type="text" class="boldme textlineheight" name="branchName" ng-model="edit.branchName"  />
+                                    </li>
+                                    <li>
+                                        IFSC Code :<br/>
+                                        <input type="text" class="boldme textlineheight" name="ifscCode" ng-model="edit.ifscCode"  />
+                                    </li>
+                                </b>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <button type="button" class="btn btn-success btn-lg btn-block btn-raised"
+                                    ng-click="saveBankDetail()">SAVE</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="panel panel-primary adjust-border-radius">
+                        <div class="panel-heading adjust-border">
+                            <h4>ID DETAIL</h4>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="plan">
+                                <b>
+                                    <li>Sponsor ID<i class="fa fa-long-arrow-right"></i>{{edit.sponsorId}}</li>
+                                    <li>Regd.Date<i class="fa fa-long-arrow-right"></i>{{edit.onDate}}</li>
+                                    <li>Total Days<i class="fa fa-long-arrow-right"></i>{{edit.dateDif}}</li>
+                                    <li>
+                                        Mobile :<br/>
+                                        <input type="text" class="boldme textlineheight" name="mobile" ng-model="edit.mobile"  />
+                                    </li>
+                                    <li>
+                                        Email :<br/>
+                                        <input type="text" class="boldme textlineheight" name="email" ng-model="edit.email"  />
+                                    </li>
+                                    <li>
+                                        Address :<br/>
+                                        <input type="text" class="boldme textlineheight" name="address" ng-model="edit.address"  />
+                                    </li>
+
+                                </b>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <button type="button" class="btn btn-success btn-lg btn-block btn-raised" ng-click="saveId()">SAVE</button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    <div id="veil" ng-show="isLoading">
+        <div id="feedLoading" ng-show="isLoading">
+            <div id="loaderImage"></div>
+        </div>
+    </div>
+</div>

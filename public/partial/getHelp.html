@@ -1,0 +1,152 @@
+<script>
+    $(function () {
+        $('.showMe2').removeClass('hidden');
+        $('.showMe1').addClass('hidden');
+    });
+</script>
+<div ng-init="getHelpFn()">
+    <div class="mdl-grid mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card mdl-shadow--2dp pie-chart">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">COLLECT LINKS</h2>
+                </div>
+                <div class="mdl-card__supporting-text" style="overflow: auto;">
+                    <table border="3" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                        <thead style="background-color: royalblue; color: white">
+                        <th class="hidden">idPayment</th>
+                        <th class="hidden">refUserId</th>
+                        <th class="hidden">targetUserId</th>
+                        <th class="hidden">imgLoc</th>
+                        <th class="hidden">Bonus</th>
+                        <th class="hidden">Status</th>
+                        <th class="hidden">Sponsor ID</th>
+                        <th class="mdl-data-table__cell--non-numeric">Date</th>
+                        <!-- <th width="10%" style="text-align: center">Time</th>-->
+                        <th class="mdl-data-table__cell--non-numeric">Account Name</th>
+                        <th>Amount</th>
+                        <th class="mdl-data-table__cell--non-numeric">Show</th>
+                        <th class="mdl-data-table__cell--non-numeric">Approve</th>
+                        <th class="mdl-data-table__cell--non-numeric">Contact</th>
+                        <th class="mdl-data-table__cell--non-numeric">Address</th>
+                        <th class="mdl-data-table__cell--non-numeric">Block</th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="getHelp in getHelps" style="font-weight: bold">
+                            <td class="hidden">{{getHelp.idPayment}}</td>
+                            <td class="hidden">{{getHelp.refUserId}}</td>
+                            <td class="hidden">{{getHelp.targetUserId}}</td>
+                            <td class="hidden">{{getHelp.imgLoc}}</td>
+                            <td class="hidden">{{getHelp.isBonus}}</td>
+                            <td class="hidden">{{getHelp.isApprove}}</td>
+                            <td class="hidden">{{getHelp.sloginName}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{getHelp.entryDate | date :  "dd.MM.y"}}</td>
+                            <!-- <td width="10%" style="text-align: center">
+                            <label>{{getHelp.timeDiff}}</label>
+                             </td>-->
+                            <td class="mdl-data-table__cell--non-numeric">{{getHelp.saccountName}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{getHelp.amount}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <button type="button"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="lunchPANModal" ng-click="viewSlipImage2(getHelp.imgLoc);"><i class="material-icons">visibility</i>View</button>
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <button ng-show="getHelp.isApprove==2" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="updatePaymentApprove(getHelp.refUserId,getHelp.idPayment);">Approve</button>
+                                <label ng-hide="getHelp.isApprove==2" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">OK</label>
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">{{getHelp.smobile}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{getHelp.sAddress}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <i class="material-icons">clear</i> <button ng-show="getHelp.isApprove==2" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="updatePaymentBlock(getHelp.refUserId,getHelp.idPayment);">Block</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img id="myImg" ng-src="{{printImagePAN}}" alt="js" width="300" height="200">
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+    </div>
+</div>
+<style>
+    #myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+
+
+    /* Add Animation */
+    .modal-content, #caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+        from {-webkit-transform:scale(0)}
+        to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+        from {transform:scale(0)}
+        to {transform:scale(1)}
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px){
+        .modal-content {
+            width: 100%;
+        }
+    }
+</style>
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById('myImg');
+    var modalImg = document.getElementById("img01");
+    img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    modal.onclick = function() {
+        modal.style.display = "none";
+    }
+</script>

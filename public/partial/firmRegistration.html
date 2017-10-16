@@ -1,0 +1,90 @@
+﻿<div class="mdl-card mdl-shadow--2dp employer-form">
+    <div class="mdl-card__title">
+        <h2>Create New Account</h2>
+        <div class="mdl-card__subtitle">Account detail can't be edited later.</div>
+    </div>
+    <div class="mdl-card__supporting-text">
+        <form class="form"  id="regFirmForm" ng-submit="regFirmInfo()" name="regForm" autocomplete="off" novalidate="novalidate">
+            <div class="form__article">
+                <div class="mdl-grid" ng-class="{ 'has-error': firmRegistration.sponsorId.$touched && firmRegistration.sponsorId.$invalid }" tabindex="1">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="sponsorId" ng-model="firmRegistration.sponsorId" maxlength="20" ensure-uniquer="" dfqurl="dfq_api/read_user_check_login_name" required />
+                        <label class="mdl-textfield__label">REFER ID</label>
+                        <div ng-messages="regForm.sponsorId.$error" ng-if="regForm.sponsorId.$dirty">
+                            <div ng-message="required">REFER ID is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-grid" ng-class="{ 'has-error': firmRegistration.loginName.$touched && firmRegistration.loginName.$invalid }" tabindex="2">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="loginName" ng-model="firmRegistration.loginName" maxlength="20" ensure-unique="" dfqurl="dfq_api/read_user_check_login_name" required />
+                        <label class="mdl-textfield__label">Log in Name</label>
+                        <div ng-messages="firmRegistration.loginName.$error" ng-if="firmRegistration.loginName.$touched">
+                            <div ng-message="required">Log in Name is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-grid" ng-class="{ 'has-error': firmRegistration.password.$touched && firmRegistration.password.$invalid }" tabindex="3">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password"  name="password" ng-model="firmRegistration.password" id="pwCheck" maxlength="20" required />
+                        <label class="mdl-textfield__label">Password</label>
+                        <div ng-messages="firmRegistration.password.$error" ng-if="firmRegistration.password.$touched">
+                            <div ng-message="maxlength">Password is required.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdl-grid"  ng-class="{ 'has-error': firmRegistration.reEnterPassword.$touched && firmRegistration.reEnterPassword.$invalid }" tabindex="4">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" name="reEnterPassword"  id="pwmatch"   ng-model="firmRegistration.reEnterPassword" maxlength="20" pw-check="pwCheck" required />
+                        <label class="mdl-textfield__label">Re-Enter Password</label>
+                        <div ng-messages="firmRegistration.reEnterPassword.$error" ng-if="firmRegistration.reEnterPassword.$touched">
+                            <div ng-message="required">Password is required.</div>
+                            <div ng-message="pwmatch">Password Not Match.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-grid" ng-class="{ 'has-error': firmRegistration.mobileNumber.$touched && firmRegistration.mobileNumber.$invalid }" tabindex="5">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="mobileNumber" ng-model="firmRegistration.mobileNumber" onkeypress="return isNumber(event)" maxlength="12"  required  />
+                        <label class="mdl-textfield__label">Contact</label>
+                        <div ng-messages="firmRegistration.mobileNumber.$error" ng-if="firmRegistration.mobileNumber.$touched">
+                            <div ng-message="required">Contact Number is required.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdl-grid"  ng-class="{ 'has-error': firmRegistration.email.$touched && firmRegistration.email.$invalid }" tabindex="6">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="email" name="email" ng-model="firmRegistration.email" maxlength="45"   />
+                        <label class="mdl-textfield__label">Email</label>
+                        <div ng-messages="firmRegistration.email.$error" ng-if="firmRegistration.email.$touched">
+                            <div ng-message="required">Email is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-grid"  ng-class="{ 'has-error': firmRegistration.address.$touched && firmRegistration.address.$invalid }" tabindex="7">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="address" ng-model="firmRegistration.address" maxlength="100"  />
+                        <label class="mdl-textfield__label">Address</label>
+                        <div ng-messages="firmRegistration.address.$error" ng-if="firmRegistration.address.$touched">
+                            <div ng-message="required">Address is required.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form__action">
+                    <div class="mdl-js-ripple-effect">
+                        <button type="submit" name="submit_button"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" tabindex="9">
+                            <i class="material-icons" role="presentation">done</i>
+                            OK
+                        </button>
+                        <!-- <input type="checkbox" id="isInfoReliable" class="mdl-checkbox__input" required/>-->
+                    </div>
+                </div>
+                <div class="mdl-grid">
+          </div>
+            </div>
+        </form>
+    </div>
+</div>

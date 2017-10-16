@@ -1,0 +1,43 @@
+﻿<div class="mdl-card mdl-shadow--2dp employer-form">
+    <div class="mdl-card__title">
+        <h2>Log In</h2>
+        <div class="mdl-card__subtitle">Log in</div>
+    </div>
+    <div class="mdl-card__supporting-text">
+            <div class="form__article">
+                <div class="mdl-grid" ng-class="{ 'has-error': login.loginName.$touched && login.loginName.$invalid }" tabindex="1">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="inputEmail" maxlength="45" ng-model="login.loginName"  autofocus required />
+                        <label class="mdl-textfield__label">User Name</label>
+                        <div ng-messages="login.loginName.$error" ng-if="login.loginName.$dirty">
+                            <div ng-message="required">User Name is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-grid" ng-class="{ 'has-error': login.password.$touched && login.password.$invalid }" tabindex="2">
+                <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="password" id="inputPassword" maxlength="45" ng-model="login.password"  />
+                    <label class="mdl-textfield__label">Password</label>
+                    <div ng-messages="login.password.$error" ng-if="login.password.$touched">
+                        <div ng-message="required">Password is required.</div>
+                    </div>
+                </div>
+            </div>
+                <div class="form__action">
+                    <label class="mdl-js-ripple-effect">
+                        <button type="submit"  ng-disabled="login.$invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="processLogin()">
+                            <i class="material-icons" role="presentation">done</i>
+                            OK
+                        </button>
+                        <!-- <input type="checkbox" id="isInfoReliable" class="mdl-checkbox__input" required/>-->
+                    </label>
+                </div>
+                <div ng-show="errordiv" class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <center><label  class="control-label" style="font-size: 20px;color:#f00">Invalid User Name OR Password</label></center>
+                        </div>
+                    </div>
+
+                </div>
+    </div>
+</div>

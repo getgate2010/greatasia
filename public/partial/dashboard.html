@@ -1,0 +1,227 @@
+﻿<script>
+    $(function () {
+        $('.showMe2').removeClass('hidden');
+        $('.showMe1').addClass('hidden');
+    });
+</script>
+<div class="mdl-grid mdl-grid--no-spacing">
+    <div class="hidden" id="just-intro" ng-init="retriveDashboard()">
+            <p> Status :    {{$root.role}}</p>
+            <p>status : {{dashboardUser.status}}</p>
+            <p>isactive : {{dashboardUser.isactive}}</p>
+            <p>panNumber : {{dashboardUser.panNumber}}</p>
+            <p>idUser : {{$root.idUser}}</p>
+    </div>
+    <div class="mdl-grid mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card mdl-shadow--2dp pie-chart">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text"><i class="material-icons">person</i>&nbsp;REFER ID :  &nbsp; <b> {{$root.userName}} </b></h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <div>
+                        <p> DONATION :<i class="fa fa-inr"></i> <b>{{dashboardUser.commAmount}}</b>
+                            &nbsp|&nbsp
+                            Days : &nbsp<b>{{dashboardUser.dateDif}}</b>
+                            &nbsp|&nbsp
+                            INCREMENT :&nbsp<i class="fa fa-inr"></i>{{dashboardUser.growth}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card mdl-shadow--2dp pie-chart">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">COLLECT Amount Rs.&nbsp;{{dashboardUser.currentConsideration}}</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <div>
+                        Rs.&nbsp;{{dashboardUser.currentConsideration}}
+                        <span ng-show="dashboardUser.getHelpFlag" >
+                            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                                    ng-click="createDlinks();">COLLECT LINK</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card mdl-shadow--2dp pie-chart">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text"><i class="material-icons">card_giftcard</i>&nbsp;GIFT Rs. {{dashboardUser.bonusAmount}}</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <div>
+                        <p>GIFT Rs.&nbsp;{{dashboardUser.bonusAmount}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--===================image show code ==================================-->
+    <div class="mdl-grid mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card mdl-shadow--2dp pie-chart">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">DONATION LINKS</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mdl-grid mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+        <div class="mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card mdl-shadow--2dp pie-chart">
+                <div class="mdl-card__supporting-text" style="overflow: auto;">
+                    <div class="div-table-content table-responsive">
+                        <table border="3" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                            <thead style="background-color: royalblue; color: white">
+                                            <th class="hidden">idPayment</th>
+                                            <th class="hidden">refUserId</th>
+                                            <th class="hidden">targetUserId</th>
+                                            <th class="hidden">imgLoc</th>
+                                            <th class="hidden">Sponsor ID</th>
+                                            <th class="hidden">Bonus</th>
+                                            <th class="hidden">Status</th>
+                                            <th class="mdl-data-table__cell--non-numeric">Date</th>
+                                            <th class="mdl-data-table__cell--non-numeric">Account Name</th>
+                                            <th class="mdl-data-table__cell--non-numeric">Acc. No.</th>
+                                            <th class="mdl-data-table__cell--non-numeric">Bank Name</th>
+                                            <th class="mdl-data-table__cell--non-numeric">Branch</th>
+                                            <th class="mdl-data-table__cell--non-numeric">IFSC</th>
+                                            <th>Amount</th>
+                                            <th class="mdl-data-table__cell--non-numeric">Mobile</th>
+                                            <th class="hidden">Email</th>
+                                            <th class="mdl-data-table__cell--non-numeric">View Slip</th>
+                                            <th class="mdl-data-table__cell--non-numeric">Upload Slip</th>
+                                            <th class="mdl-data-table__cell--non-numeric">Remark</th>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="payment in payments" style="font-weight: bold">
+                                                <td class="hidden">{{payment.idPayment}}</td>
+                                                <td class="hidden">{{payment.refUserId}}</td>
+                                                <td class="hidden">{{payment.targetUserId}}</td>
+                                                <td class="hidden">{{payment.imgLoc}}</td>
+                                                <td class="hidden">{{payment.loginName}}</td>
+                                                <td class="hidden">{{payment.isBonus}}</td>
+                                                <td class="hidden">{{payment.isApprove}}</td>
+                                                <td class="mdl-data-table__cell--non-numeric">{{payment.entryDate | date :  "dd.MM.y"}}</td>
+                                                <td class="mdl-data-table__cell--non-numeric">{{payment.accountName}}</td>
+                                                <td class="mdl-data-table__cell--non-numeric">{{payment.accountNumber}}</td>
+                                                <td class="mdl-data-table__cell--non-numeric">{{payment.bankName}}</td>
+                                                <td class="mdl-data-table__cell--non-numeric">{{payment.branchName}}</td>
+                                                <td class="mdl-data-table__cell--non-numeric">{{payment.ifscCode}}</td>
+                                                <td>{{payment.amount}}</td>
+                                                <td class="mdl-data-table__cell--non-numeric">{{payment.mobile}}</td>
+                                                <td class="hidden">{{payment.email}}</td>
+                                                <th class="mdl-data-table__cell--non-numeric">
+                                                    <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#panImageModal" id="lunchPANModal" ng-click="viewSlipImage('{{payment.imgLoc}}')">View</button>
+                                                </th>
+                                                <th class="mdl-data-table__cell--non-numeric">
+                                                    <button type="file" class="btn btn-success btn-sm btn-block btn-raised" ngf-select ng-model="picFile1"  ng-change="uploadPic1(picFile1,{{payment.idPayment}})" name="file" accept="image/*" ngf-max-size="3MB" required ngf-model-invalid="errorFile1">UPLOAD</button>
+                                                </th>
+                                                <td class="mdl-data-table__cell--non-numeric">
+                                                    <label ng-show="payment.isApprove==2" class="text-warning">Pending</label>
+                                                    <label ng-hide="payment.isApprove==2" class="text-success">OK</label>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <img id="myImg" ng-src="{{dashboardUser.printImagePAN}}" alt="js" width="300" height="200">
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+    </div>
+</div>
+<style>
+    #myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+
+
+    /* Add Animation */
+    .modal-content, #caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+        from {-webkit-transform:scale(0)}
+        to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+        from {transform:scale(0)}
+        to {transform:scale(1)}
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px){
+        .modal-content {
+            width: 100%;
+        }
+    }
+</style>
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById('myImg');
+    var modalImg = document.getElementById("img01");
+    img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    modal.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    /*$('a').click=function(){
+        alert("dhfkdsh");
+        $('#drawer').removeClass('is-visible');
+        $('.mdl-layout__obfuscator').removeClass('is-visible');
+    }*/
+
+</script>

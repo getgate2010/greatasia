@@ -1,0 +1,52 @@
+<script>
+    $(function () {
+        $('.showMe2').removeClass('hidden');
+        $('.showMe1').addClass('hidden');
+    });
+</script>
+<div ng-init="getNewUserIdsFn()">
+    <div class="mdl-grid mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+            <div class="mdl-card mdl-shadow--2dp pie-chart">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">List of New Accounts</h2>
+                </div>
+                <div class="mdl-card__supporting-text" style="overflow: auto;">
+                    <table border="3" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                        <thead style="background-color: royalblue; color: white">
+                        <th class="hidden">idUser</th>
+                        <th class="hidden">isPaid</th>
+                        <th class="mdl-data-table__cell--non-numeric">Date</th>
+                        <th class="mdl-data-table__cell--non-numeric">Login Name</th>
+                        <th class="mdl-data-table__cell--non-numeric">Account Name</th>
+                        <th class="mdl-data-table__cell--non-numeric">Address</th>
+                        <th class="mdl-data-table__cell--non-numeric">Mobile</th>
+                        <th class="mdl-data-table__cell--non-numeric">Amount</th>
+                        <th class="hidden">Approve</th>
+                        <th class="hidden">Cancel</th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="getHelp in newUserIds" style="font-weight: bold">
+                            <td class="hidden">{{getHelp.idUser}}</td>
+                            <td class="hidden">{{getHelp.isPaid}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{getHelp.onDate | date :  "dd.MM.y"}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{getHelp.loginName}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{getHelp.accountName}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{getHelp.address}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{getHelp.mobile}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{getHelp.commAmount}}</td>
+                            <td  class="hidden">
+                                <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="UserIdsChecked(getHelp.idUser);">Approve</button>
+                            </td>
+
+                            <td class="hidden">
+                                <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="UserIdsCanceled(getHelp.idUser);">Block</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

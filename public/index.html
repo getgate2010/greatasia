@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html ng-app="AMSApp">
+<head>
+    <link rel="icon" type="image/png" href="images/images.jpg" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="helping plan.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> GREAT | ASIA</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900' rel='stylesheet'
+          type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/lib/getmdl-select.min.css">
+    <link rel="stylesheet" href="css/lib/nv.d3.css">
+    <link rel="stylesheet" href="css/application.css">
+    <!-- endinject -->
+    <link href="css/angucomplete-alt.css" rel="stylesheet" />
+    <link href="css/alertify.core.css" rel="stylesheet" />
+    <link href="css/alertify.default.css" rel="stylesheet" />
+</head>
+<body ng-controller="mainCtrl">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header is-small-screen">
+    <header class="mdl-layout__header">
+
+    </header>
+    <div class="mdl-layout__drawer" id="drawer">
+        <a class="mdl-navigation__link mdl-navigation__link--current" href="#">
+            <header>GREAT ASIA</header>
+        </a>
+        <nav class="mdl-navigation">
+            <div class="showMe1">
+                <div class="clickmenu">
+                <a class="mdl-navigation__link mdl-navigation__link--current"   href="#home">
+                    <i class="material-icons" role="presentation">home</i>
+                    HOME
+                </a>
+            </div>
+                <div class="clickmenu">
+                <a class="mdl-navigation__link mdl-navigation__link--current"  href="#firmRegistration">
+                    <i class="material-icons" role="presentation">person_add</i>
+                    CREATE ACCOUNT
+                </a>
+               </div>
+                <div class="clickmenu">
+                <a class="mdl-navigation__link mdl-navigation__link--current"  href="#login">
+                    <i class="material-icons" role="presentation">lock</i>
+                    LOG IN
+                </a>
+            </div>
+                </div>
+            <!-- show after login -->
+            <div class="showMe2 hidden">
+                <div class="clickmenu">
+                <a class="mdl-navigation__link mdl-navigation__link--current" href="#dashboard">
+                    <i class="material-icons" role="presentation">add</i>
+                    INCREMENT
+                </a>
+               </div>
+                <div class="clickmenu">
+                <a class="mdl-navigation__link mdl-navigation__link--current"  href="#getHelp">
+                    <i class="material-icons" role="presentation">thumb_up</i>
+                    COLLECT
+                </a>
+                </div>
+                <div class="clickmenu">
+                    <a class="mdl-navigation__link mdl-navigation__link--current"  ui-sref="resetPw">
+                    <i class="material-icons" role="presentation">vpn_key</i>
+                     PASSWORD RESET
+                </a>
+               </div>
+                <div class="clickmenu">
+                <a  class="mdl-navigation__link mdl-navigation__link--current" href="#" ng-click="logoutme()">
+                    <i class="material-icons" role="presentation">power_settings_new</i>
+                    LOG OUT
+                </a>
+           </div>
+            </div>
+            <div class="mdl-layout-spacer"></div>
+            <a class="mdl-navigation__link" href="#">
+                <i class="material-icons" role="presentation">link</i>
+                COMPLAIN
+            </a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div ui-view>
+        </div>
+    </main>
+</div>
+
+<!-- inject:js -->
+<script src="js/jquery.min.js"></script>
+<!--<script src="js/material.min.js"></script>-->
+<!--<script src="js/imageviewer.js"></script>-->
+<script src="js/material.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-ui-router.js"></script>
+<script src="js/serviceAPI.js"></script>
+<script src="js/mainApp.js"></script>
+<script src="js/myScript.js" type="text/javascript"></script>
+<script src="js/config.js"></script>
+<script src="js/angular-messages.min.js"></script>
+<script src="js/angucomplete-alt.js" type="text/javascript"></script>
+<script src="js/angular-local-storage.min.js"></script>
+<script src="js/alertify.js"></script>
+<!--<script src="js/moment.js"></script> &lt;!&ndash;this is updated&ndash;&gt;-->
+<script src="js/ng-file-upload.js"></script>
+<script src="js/ng-file-upload-shim.js"></script>
+<script src="js/d3.js"></script>
+<script src="js/getmdl-select.min.js"></script>
+<script src="js/nv.d3.js"></script>
+<!--<script src="js/widgets/employer-form/employer-form.js"></script>-->
+<!--<script src="js/widgets/line-chart/line-chart-nvd3.js"></script>-->
+<!--<script src="js/widgets/pie-chart/pie-chart-nvd3.js"></script>-->
+<script src="js/widgets/table/table.js"></script>
+<!--<script src="js/widgets/todo/todo.js"></script>-->
+<script>
+        function reset() {
+        $("#toggleCSS").attr("href", "alertify.default.css");
+        alertify.set({
+            labels: {
+                ok: "OK",
+                cancel: "Cancel"
+            },
+            delay: 4000,
+            buttonReverse: false,
+            buttonFocus: "ok"
+        });
+    }
+    function showmeDataErr() {
+        reset();
+        alertify.error('WARNING,Invalid data Please Try again..!!!');
+        return false;
+    }
+    function showmeSuccess() {
+        reset();
+        alertify.success("SUCCESS..Data inserted..");
+        return false;
+    }
+    function sessionError() {
+        reset();
+        alertify.custom = alertify.extend("custom");
+        alertify.custom("Session Expired!!!!..Please Kindly LogIn again..");
+        return false;
+    }
+    function showmeNetworkErr() {
+        reset();
+        alertify.error('ERROR!!! Internet not connected..!!!');
+        return false;
+    }
+    function showmwNoData() {
+        reset();
+        alertify.custom = alertify.extend("custom");
+        alertify.custom("No Data found..");
+        return false;
+    }
+// menu close when click
+        function close() {
+            var d = document.querySelector('.mdl-layout');
+            d.MaterialLayout.toggleDrawer();
+        }
+
+        document.querySelector('.mdl-layout__drawer').addEventListener('click', close);
+</script>
+</body>
+</html>

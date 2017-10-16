@@ -1,0 +1,43 @@
+{
+  "name": "helpplanbusiness",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "cloudinary": "^1.4.1",
+    "body-parser": "^1.13.3",
+    "cors": "^2.7.1",
+    "app-root-path": "^1.0.0",
+    "fs-extra": "^0.30.0",
+    "debug": "^2.2.0",
+    "fs.extra": "^1.3.2",
+    "express": "^4.13.4",
+    "multer": "^1.1.0",
+    "jsonwebtoken": "^7.0.1",
+    "mysql": "^2.11.1",
+    "mkdirp": "^0.5.1",
+    "request": "^2.74.0",
+    "mysqldump": "^1.1.1",
+    "validator": "^4.5.2",
+    "sys": "^0.0.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getgate2010/helpplanbusiness.git"
+  },
+  "keywords": [
+    "help",
+    "plan",
+    "busuness"
+  ],
+  "author": "help Business",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/getgate2010/helpplanbusiness/issues"
+  },
+  "homepage": "https://github.com/getgate2010/helpplanbusiness#readme",
+  "description": ""
+}

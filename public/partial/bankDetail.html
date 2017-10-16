@@ -1,0 +1,97 @@
+<div class="mdl-card mdl-shadow--2dp employer-form">
+    <div class="mdl-card__title">
+        <h2>BANK ACCOUNT DETAIL</h2>
+        <div class="mdl-card__subtitle">Bank Detail can't be edited later</div>
+    </div>
+    <div class="mdl-card__supporting-text">
+        <form class="form"  id="regFirmForm" ng-submit="updateBankDeailCommt()" name="regForm" autocomplete="off" novalidate="novalidate">
+            <div class="form__article">
+                <div class="mdl-grid"  ng-class="{ 'has-error': dashboardUser.bankName.$touched && dashboardUser.bankName.$invalid }" tabindex="1">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="bankName" ng-model="dashboardUser.bankName" required  />
+                        <label class="mdl-textfield__label">Bank Name</label>
+                        <div ng-messages="dashboardUser.bankName.$error" ng-if="dashboardUser.bankName.$touched">
+                            <div ng-message="required">Bank Name is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-grid" ng-class="{ 'has-error': dashboardUser.accountNumber.$touched && dashboardUser.accountNumber.$invalid }" tabindex="2">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="accountNumber" ng-model="dashboardUser.accountNumber" required/>
+                        <label class="mdl-textfield__label">Account No.</label>
+                        <div ng-messages="dashboardUser.accountNumber.$error" ng-if="dashboardUser.accountNumber.$touched">
+                            <div ng-message="required">Account Number is required.</div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="mdl-grid"  ng-class="{ 'has-error': dashboardUser.accountName.$touched && dashboardUser.accountName.$invalid }" tabindex="3">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="accountName" ng-model="dashboardUser.accountName" required />
+                        <label class="mdl-textfield__label">Account Name</label>
+                        <div ng-messages="dashboardUser.accountName.$error" ng-if="dashboardUser.accountName.$touched">
+                            <div ng-message="required">Account Name is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-grid"  ng-class="{ 'has-error': dashboardUser.ifscCode.$touched && dashboardUser.ifscCode.$invalid }" tabindex="4">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="ifscCode" ng-model="dashboardUser.ifscCode" required  />
+                        <label class="mdl-textfield__label">IFSC Code</label>
+                        <div ng-messages="dashboardUser.ifscCode.$error" ng-if="dashboardUser.ifscCode.$touched">
+                            <div ng-message="required">IFSC Code is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-grid"  ng-class="{ 'has-error': dashboardUser.branchName.$touched && dashboardUser.branchName.$invalid }" tabindex="5">
+                    <div class="mdl-cell mdl-cell--9-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="branchName" ng-model="dashboardUser.branchName" required  />
+                        <label class="mdl-textfield__label">Branch</label>
+                        <div ng-messages="dashboardUser.branchName.$error" ng-if="dashboardUser.branchName.$touched">
+                            <div ng-message="required">Branch Name is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-grid" ng-class="{ 'has-error': dashboardUser.commAmt.$touched && dashboardUser.commAmt.$invalid }" tabindex="6">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+                        <label class="mdl-textfield__label">Donation</label>
+                        <select class="mdl-textfield__input"  ng-model="dashboardUser.commAmt" name="commAmt" >
+                            <option class="mdl-menu__item" selected value="2000">2000</option>
+                            <option class="mdl-menu__item" value="4000">4000</option>
+                            <option class="mdl-menu__item" value="6000">6000</option>
+                            <option class="mdl-menu__item" value="8000">8000</option>
+                            <option class="mdl-menu__item" value="10000">10000</option>
+                            <option class="mdl-menu__item" value="12000">12000</option>
+                            <option class="mdl-menu__item" value="14000">14000</option>
+                            <option class="mdl-menu__item" value="16000">16000</option>
+                            <option class="mdl-menu__item" value="18000">18000</option>
+                            <option class="mdl-menu__item" value="20000">20000</option>
+                            <option class="mdl-menu__item" value="22000">22000</option>
+                            <option class="mdl-menu__item" value="24000">24000</option>
+                            <option class="mdl-menu__item" value="26000">26000</option>
+                            <option class="mdl-menu__item" value="28000">28000</option>
+                            <option class="mdl-menu__item" value="30000">30000</option>
+                            <option class="mdl-menu__item" value="30000">32000</option>
+                            <option class="mdl-menu__item" value="30000">34000</option>
+                            <option class="mdl-menu__item" value="30000">36000</option>
+                            <option class="mdl-menu__item" value="30000">38000</option>
+                        </select>
+
+
+                    </div>
+                </div>
+                <div class="form__action">
+                    <label class="mdl-js-ripple-effect">
+                        <!-- <input type="checkbox" id="isInfoReliable" class="mdl-checkbox__input" required/>-->
+                        <span class="mdl-checkbox__label">
+                             <button type="submit" name="submit_button" ng-disabled="regForm.$invalid" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" tabindex="9">
+                                 <i class="material-icons" role="presentation">done</i>
+                                 OK
+                             </button>
+                        </span>
+                    </label>
+
+                </div>
+                </div>
+        </form>
+    </div>
+</div>
